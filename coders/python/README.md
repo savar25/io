@@ -356,3 +356,12 @@ System Settings > Accessibility > Zoom and choose Control or other.
 **Prompt shortcuts**
 Arrows to return to prior prompts
 Ctrl C - Clear prompt
+
+
+## Neon Database + AI
+
+Connect your app to Neon with a single command
+
+Sets up Neon's AI-assisted dev tooling for your project (MCP server, agent tools, extension). Run the command in your project root to wire Neon into your app.
+
+	npx neonctl@latest init
