@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>IO Team</title>
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="../../localsite/css/base.css" id="/localsite/css/base.css" />
+
+<script type="text/javascript">
+  (function() {
+    var hostname = window.location.hostname.toLowerCase();
+    if (!hostname.includes("localhost") && !hostname.includes("model.earth")) {
+      window.location.href = "https://model.earth/io/team/";
+    }
+  })();
+</script>
+
+<script type="text/javascript" src="../../localsite/js/d3.v5.min.js" id="/localsite/js/d3.v5.min.js"></script>
+<script type="text/javascript" src="../../localsite/js/jquery.min.js" id="/localsite/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../localsite/js/localsite.js?showheader=true&showsearch=true"></script>
+<script type="text/javascript" src="../../localsite/js/showdown.min.js" id="/localsite/js/showdown.min.js"></script>
+
+<style>
+.bio {
+  clear:both;
+  margin-bottom: 20px;
+  display:block;
+}
+.bioimage {
+  clear:both;
+  float:left;
+  margin-bottom: 40px;
+}
+/* All images forced to circles, portraits cropped from bottom */
+.bioimage img {
+    padding: 0px !important;
+    margin: 0px !important;
+    margin-right: 30px !important;
+    width: 180px !important;
+    height: 180px !important;
+    min-width: 180px !important;
+    min-height: 180px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+    object-position: center top !important;
+}
+.biotext {
+  overflow: auto;
+}
+.biotext h2 {
+  margin-top: 0px;
+}
+@media (max-width: 800px) {
+  .bioimage {
+      float: none;
+      margin-bottom: 0px;
+  }
+}
+@media print {
+  .bioimage img {
+      width: 140px !important;
+      height: 140px !important;
+      min-width: 140px !important;
+      min-height: 140px !important;
+  }
+  #toplogos {
+    margin-top: -40px;
+    padding-bottom: 20px;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="content contentpadding" style="margin-bottom:0px; padding-bottom:0px">
+
+
+<div class="topLinks">
+    <span class="earth" style="display:none"><a href="../../projects/">Active Projects</a> |</span>
+    <a href="../coders/" style="white-space:nowrap;">Coding Meetups</a> |
+    <a href="../">Inflow-Outflow</a> |
+    <span style="white-space:nowrap;"><a href="../learn/">For Research & Teaching</a> | 
+    <a href="../about/">About State Models</a></span>
+    <br>
+</div>
+
+<div style="float:right; white-space: nowrap; padding-top:15px">
+  <!-- Caused error after javascript: goHash({'',''}); -->
+<a id="reshuffle" href="javascript:$('.bios').shuffleChildren()">Reshuffle</a>
+<a id="expand-team" href="./" style="display:none">Expand Team</a>
+</div>
+
+<h1 id="pagetitle" style="margin-bottom:15px">Contributors</h1>
+
+<a href="../../localsite/info/input">Contact Us Online</a>. Better yet, <a href="https://github.com/ModelEarth/io">post issues</a> with your questions and corrections. <a href="https://github.com/ModelEarth/">Fork our repos</a> to edit.
+<br><br>
+
+<div class="bios">
+
+<div class="bio presenter">
+<div class="bioimage">
+<img src="img/Wesley-Ingwersen.jpg">
+</div>
+<div class="biotext">
+<h2>Dr. Wesley Ingwersen, US Environmental Protection Agency</h2>
+Dr. Wesley Ingwersen has served as an Environmental Engineer in the US EPA’s Office of Research and Development since 2010,
+developing methods, models, and tools for life cycle assessment and materials management. He co-led an international guidance document on <a href="https://aclca.org/pcr/">product category rules</a>. Dr. Ingwersen helped establish the Technical Working Group for the federal <a href="http://lcacommons.gov" style="white-space:nowrap">LCA Commons
+initiative</a> and the Global Network of LCA databases. He has served as the technical expert on LCA for the US Department of State.
+Dr. Ingwersen obtained M.S. and Ph.D. degrees from the University of Florida a B.A. from Georgetown University.
+He leads the development of the GA model.
+</div>
+</div>
+
+<div class="bio presenter">
+<div class="bioimage">
+<img src="img/Loren-Heyns-2021.jpg">
+</div>
+<div class="biotext">
+<h2>Loren Heyns, Georgia Department of Economic Development</h2>
+
+Loren Heyns is a Programmer Analyst at the Georgia Department of Economic Development (GDEcD) and project coordinator for DreamStudio's model.earth site. Loren's programming background includes data-driven websites for Georgia State Parks, Southern Company, Green Law, and Georgia directories for Aerospace, Trade, Logistics and CameraReady film sites. Loren started DreamStudio with his wife Terri and co-developers Don Adams and Barbara Wrede, creating neighborhood sites and environmental education apps for eight southeast states, Wisconsin and Hawaii. Loren studied at Georgia Tech, UC Santa Barbara and Michigan State University. <a href="https://dreamstudio.com/resume/">Loren's CV</a>
+</div>
+</div>
+
+<div class="bio presenter">
+<div class="bioimage">
+<img src="img/Valerie-Thomas.png">
+</div>
+<div class="biotext">
+<h2>Dr. Valerie Thomas, Georgia Institute of Technology</h2>
+Dr. Valerie Thomas is the Anderson Interface Professor of Natural Systems in the School of Industrial and Systems Engineering at Georgia Tech, with a joint appointment in the School of Public Policy. Her research includes bioenergy development, focusing on economics and environmental impacts, including <a href="../../../community/biotech/">Sustainable Production of Fuels and Chemicals from Biomass</a> &nbsp;Through 2019 she was a member of the USDA-DOE Biomass R&D Technical Advisory Committee. Before Georgia Tech she worked at Princeton University and Carnegie Mellon University, and has served as a Congressional Science Fellow. She has a PhD in high energy physics from Cornell and a B.A. in physics from Swarthmore.
+</div>
+</div>
+
+<div class="bio">
+<div class="bioimage">
+<img src="img/Costas-Simoglou.jpg">
+</div>
+<div class="biotext">
+<h2>Costas Simoglou, Georgia Department of Economic Development</h2>
+Costas Simoglou is the Director of the Georgia Center of Innovation for Energy Technology. His mission is to help Georgia’s companies accelerate the development of new products, ideas and business models in the Energy ecosystem and maintain the State’s leadership position in the fields of energy generation, transmission, distribution, storage and consumption.
+</div>
+</div>
+
+<div class="bio">
+<div class="bioimage">
+<img src="img/Dawn-Price.jpg">
+</div>
+<div class="biotext">
+<h2>Dawn Price, Georgia Department of Economic Development</h2>
+Dawn M. Price works with the Georgia Department of Economic Development on the Center of Innovation team. She is an Industry Engagement Manager for both the Center for Energy Technology and Center for Information Technology. She is focused on building relationships and strengthening Georgia’s industry ecosystems and local business climates.
+</div>
+</div>
+
+<div class="bio">
+<div class="bioimage">
+<img src="img/Barbara-Alfano.jpg">
+</div>
+<div class="biotext">
+<h2>Barbara Alfano, US Environmental Protection Agency</h2>
+Barbara Alfano is Chief of the PCB & Sustainability Section for the U.S. Environmental Protection Agency Region 4 office.  She joined the EPA in 1988, after working as a national wetland specialist for six years in Florida. Most of her time at EPA has been spent as a project manager responsible for cleaning up Superfund and Brownfields sites in the southeast.  She recently served as the Regional Brownfields Coordinator for six years. She has also served as Acting RCRA Corrective Action and Permits Section Chief, Office of Superfund Public Affairs and Outreach Director, Superfund Section Chief, and Brownfields Section Chief. Her background includes being raised in Pennsylvania and graduating from the University of South Florida in Tampa.
+</div>
+</div>
+
+<div class="bio">
+<div class="bioimage">
+<img src="img/Ivy-Zhou.jpg">
+</div>
+<div class="biotext">
+<h2>Ivy Zhou, Applied Machine Learning, Northeastern University</h2>
+Ivy holds a Master's degree in Data Analytics, specializing in Applied Machine Learning, from
+Northeastern University. She earned her Bachelor's degree in Mathematics from the University
+of Washington, Seattle, providing her with a strong academic foundation in data science.
+Ivy has comprehensive expertise in machine learning modeling, predictive and statistical
+analysis. She is proficient in Python, SQL, and R, with strong skills in data manipulation,
+designing data pipelines, constructing databases, and data visualization. As a data scientist, Ivy
+is passionate about discovering data insights and optimizing strategy decision-making.
+</div>
+</div>
+
+
+<div class="bio">
+<div class="bioimage">
+<img src="img/Kargil-Thakur.jpg">
+</div>
+<div class="biotext">
+<h2>Kargil Thakur, Software Engineer, Machine Learning & AI</h2>
+Kargil Thakur is a Master's student in Applied Data Science at the University of Chicago, with two years of prior industry experience as a software engineer. He possesses strong skills in Python, SQL, Tableau, and cloud technologies, as well as expertise in machine learning and data mining tools. Kargil has worked on projects involving sales forecasting models and developing generative AI systems. His research interests lie in conversational AI, natural language processing, and deep learning technologies. <a href="https://www.linkedin.com/in/kargil/" target="GauravPatil">Linkedin</a>
+</div>
+</div>
+
+
+<div class="bio">
+<div class="bioimage">
+<img src="img/Honglin-Zhu.jpg">
+</div>
+<div class="biotext">
+<h2>Honglin Zhu, Data Scientist & ML Engineer, Johns Hopkins</h2>
+Honglin Zhu holds a Master of Science in Engineering Degree in Data Science from Johns Hopkins University, and a Bachelor of Science Degree with majors in Data Science and Computer Science from New York University Shanghai. With a strong command of programming languages such as Python, SQL, and R, he is deeply passionate about applying data science and machine learning techniques to tackle real-world challenges, particularly in the fields of deep learning, computer vision and natural language processing. <a href="https://www.linkedin.com/in/honglin-zhu-0044b6220/" target="HonglinZhu">Linkedin</a>
+</div>
+</div>
+
+
+<div class="bio">
+<div class="bioimage">
+<img src="img/LakshPant.jpg">
+</div>
+<div class="biotext">
+<h2>Laksh Pant, Software Engineer, React, USEEIO Data</h2>
+Laksh Pant is a full-stack development with a Computer Science masters degree from Rutgers University. Proficient in Python, JavaScript, React and SQL, he has a keen interest in writing complex and impactful code that drives solutions that give back to society. Laksh combines wide experience with hosting technologies to build dynamic and scalable applications with clean frontend design and high-quality performance.  In 2024 Laksh updated the US EPA's USEEIO impact widgets to implement the new 50 state models. <a href="https://www.linkedin.com/in/lakshit-pant-7810b220a/" target="LakshPant">Linkedin</a>
+</div>
+</div>
+
+
+<div class="bio">
+<div class="bioimage">
+<img src="img/Mohammed-Saalim-K.jpg">
+</div>
+<div class="biotext">
+<h2>Mohammed Saalim K, Full Stack Developer, model.earth USEEIO Lead</h2>
+Mohammed Saalim K is a full-stack developer with 3+ years of professional experience at Tata Consultancy Services (Humana Healthcare) and Newgen Software Technologies, specializing in React, TypeScript, and data visualization. As Lead Developer for USEEIO updates at model.earth, he implemented v2 model integration with dynamic state-specific conversions, built interactive D3.js bubble charts with real-time GitHub API data loading, and developed matrix-based job quantity calculations. Key contributions include fixing a critical legacy hash retention bug in React widgets and implementing comprehensive UX improvements. <a href="https://mohammed-saalim.vercel.app/" target="_blank">Portfolio</a> | <a href="https://www.linkedin.com/in/mohammed-saalim/" target="_blank">LinkedIn</a> | <a href="https://github.com/mohammed-saalim" target="_blank">GitHub</a>
+</div>
+</div>
+
+
+
+
+</div>
+<!-- /.bios -->
+
+<div class="bio" style="clear:both">
+      Interested in using our data analysis tools in your next project? <a href="../../localsite/info/input">Contact us online</a>. Get involved with our <a href="../../projects/">Active Projects</a>.  
+</div>
+
+<br>
+
+</div>
+
+<script>
+$(document).ready(function () {
+  $.fn.shuffleChildren = function() {
+    $.each(this.get(), function(index, el) {
+        var $el = $(el);
+        var $find = $el.children();
+
+        $find.sort(function() {
+            return 0.5 - Math.random();
+        });
+
+        $el.empty();
+        $find.appendTo($el);
+    });
+  };
+  $(".bios").shuffleChildren();
+
+
+  if(window.location.hash.includes("presenters")) {
+    $(".bio").hide();
+    $(".presenter").show();
+    $("#reshuffle").hide();
+    $("#expand-team").show();
+    $('#pagetitle').text("Industry Comparison Tools for Sustainable Communities");
+    $('.topLinks').hide();
+  }
+});
+</script>
+<link rel="stylesheet" href="/localsite/css/fonts/materialicons/icon.css" id="/localsite/css/fonts/materialicons/icon.css" />
+</body>
+</html>
