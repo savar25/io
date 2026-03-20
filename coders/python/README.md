@@ -1,10 +1,6 @@
 Install steps for:
 <h1>pyenv (python and pip)<br>nvm (node and npm)<br>conda and docker notes</h1>
 
-To open local .ipynb files, run `jupyter notebook` after choosing "New Terminal at Folder".
-[Github token steps](../../../localsite/start/steps/github-token) - Push files from python or Rust.
-
-
 ## JAMstack and Yarn
 
 We generally focus on [JAM Stack](https://www.cloudflare.com/learning/performance/what-is-jamstack/) development without builds.
@@ -31,14 +27,15 @@ If pip install doesn't run, and you see (base), then deactivate the conda base e
 	conda deactivate
 -->
 
-## Coding CLI setup
+## Coding CLI setup - Claude, OpenAI, etc
 
-If you're on a new computer, start below with pyenv (python and pip) and nvm (node and npm).
+If you're  configuring your computer for the first time, start below with pyenv (python and pip) and nvm (node and npm).
 
-Vibe code with numerous repos and submodules, like in our [webroot](../../../).
+We recommend running most installs in your Coding Agent CLI terminal, so issues are more easily resolved.
 
-[Claude Code CLI](https://www.anthropic.com/claude-code) ($17/month) - Recommended
+[On our Webroot Setup](../../../team/setup/) page, choose "With AI" to see links for downloading Claude, OpenAI Codex, xAI, Gemini, etc.
 
+The Webroot Manager page also has [steps to push and pull](../../../team/setup/#push) submodules. (Running "push" automatically invokes pull first.)
 <!-- 
 Run /init to create a CLAUDE.md file with instructions for Claude.
 
@@ -195,8 +192,10 @@ You might also get a dialog to install xcode.
 
 	brew install python
 
+We generally avoid .ipynb files and focus on .py for [data-pipeline automation](../../../data-pipeline/admin/) with browser frontends.
 
-
+Alternative - To open local .ipynb files, run `jupyter notebook` after choosing "New Terminal at Folder".
+[Github token steps](../../../localsite/start/steps/github-token) - Push files from python or Rust.
 
 ## Conda
 
@@ -237,6 +236,8 @@ Use a pyenv virtual environment to resolve.
 -->
 
 ## Docker
+
+Optional - Our JAM Stack sites don't require Docker to run locally. We store variables in docker/.env and use them locally without running Docker.
 
 [Docker Desktop download](https://www.docker.com) - Install and you'll see an whale-boat icon. Don't install Docker using Homebrew. Docker for Mac (Docker Desktop) provides better performance and integration with the operating system. 
 
@@ -330,6 +331,8 @@ Or, if you don't want/need a background service you can just run:
 
 ## Github CLI
 
+We use Github CLI with our team/git.sh for one-step "push" and "pull" deployments of submodules.
+
 ### Install Chocolatey package manager
 
 For anyone unable to install the Github CLI on their Windows PC using winget, Chocolatey works smoothly. When opening Powershell first, right click Powershell and run as Administrator then run this:
@@ -359,8 +362,8 @@ Ctrl C - Clear prompt
 
 ## Neon Database + AI
 
-Connect your app to Neon with a single command
+Connect your web root to Neon (for PostgreSQL hosting) with a single command. Sets up Neon's AI-assisted dev tooling in your web root (MCP server, agent tools, extension). Run the command once in your web root to give your coding agent Neon superpowers.
 
-Sets up Neon's AI-assisted dev tooling for your project (MCP server, agent tools, extension). Run the command in your project root to wire Neon into your app.
+Run the command in your web root to wire Neon into your app.
 
 	npx neonctl@latest init
