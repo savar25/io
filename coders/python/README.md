@@ -8,8 +8,7 @@ To open local .ipynb files, run `jupyter notebook` after choosing "New Terminal 
 ## JAMstack and Yarn
 
 We generally focus on [JAM Stack](https://www.cloudflare.com/learning/performance/what-is-jamstack/) development without builds.
-When we do build, we'll do so with [Yarn](https://yarnpkg.com/) if the project isn't already using npm.
-Yarn syntax is easier and the builds are faster. 
+When use [Yarn](https://yarnpkg.com/) if a project isn't already using npm. Yarn syntax is easier and the builds are faster. 
 
 ## Start a Virtual Environment 
 
