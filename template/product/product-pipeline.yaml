@@ -1,0 +1,19 @@
+type: product  
+name: Acme Pipeline - Power Transport  
+description: pipeline provider  
+states: Oklahoma
+version: 1  
+
+flow:
+- api: https://api.edap-cluster.com/useeio/api 
+
+activity:  
+- description: fuel transport and storage  
+
+output:  
+- sector: 212100  
+  sector_name: Coal  
+- sector: 324190  
+  sector_name: Other petroleum and coal products  
+- sector: 123456  
+  sector_name: Sample Sector  

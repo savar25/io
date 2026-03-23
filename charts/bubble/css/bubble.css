@@ -1,0 +1,175 @@
+.bubble-graph {
+  max-width:1000px;
+  /* position: relative; */ /* Bug: Popup misalign */
+}
+.bubble-graph select {
+  max-width:250px;
+}
+
+#imp {
+  background-color: #888;
+  padding-right: 40px;
+}
+#imp div {
+  margin: auto;
+  padding: 30px;
+  margin-right: -100px;
+}
+#bubble-graph-title {
+  font-size: 16px;
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.graph-picklist{
+  margin-left: 5px;
+  font-size: 18px;
+  padding: 4px;
+  border-radius: 8px;
+}
+
+h4{
+  /* text-align: center; */ /* avoid - effect info page */
+  font-weight: normal;
+}
+
+.axis text {
+  font-size: 14px;
+  fill: #777;
+}
+
+.axis path {
+  display: none;
+}
+
+.axis line {
+  stroke-width:.3px;
+  stroke: #dedede;
+}
+
+#graph-wrapper-x {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+#graph-wrapper-y {
+  text-align: center;
+  transform:rotate(-90deg) translateX(-374px) translateY(35px);
+  transform-origin: bottom left;
+  position: absolute;
+}
+#graph-wrapper-z {
+  margin-top: 10px;
+  text-align: center;
+  z-index: 2;
+
+  /* would be better to have click pass through chart */
+  /*
+  position: absolute; 
+  top:0px;
+  */
+  left: 30%;
+}
+
+#bubble-graph-equation{
+  position: absolute;
+  top:20px;
+  left:60%;
+  text-align: center;
+}
+
+div.tooltip {
+  position: absolute;
+  text-align: center;
+  width: 170px;
+  min-height: fit-content;
+  height: 100px;
+  overflow: auto;
+  padding: 3px;
+  padding-block: 8px;
+  font: 10px sans-serif;
+  background: lightsteelblue;
+  border: 0px;
+  border-radius: 8px;
+  pointer-events: none;
+}
+text {
+  font-size:18px;
+}
+.text-space-vert {
+  width:80px;
+  display: inline-block;
+}
+.text-space-horz {
+  margin-left: 30px;
+  display: inline-block;
+  width:120px;
+}
+.right-then-left {
+  clear:both;
+  float:right;
+}
+.switch-text {
+  font-size:14px;
+  float:left;
+  padding:6px 8px 0 0;
+  color: #aaa;
+}
+.chart-right {
+  float:right;
+}
+@media (max-width: 800px) {
+
+}
+
+
+
+/* bubble chart toggle */
+/* source: https://www.w3schools.com/howto/howto_css_switch.asp */
+
+/* Commented out - was causing conflicts with JavaScript styling
+.selected {
+  stroke-width:100px;
+  fill: "yellow"
+}
+*/
+
+/* bubble chart red toggle */
+input:checked + .slider {
+  background-color: #862b23;
+}
+input:focus + .slider {
+  box-shadow: 0 0 1px #862b23;
+}
+
+/* bubble click info panel */
+#bubble-click-info {
+  min-width: 300px;
+  margin-top: 10px;
+  padding: 10px;
+  background: #f9f9f9;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  max-width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#bubble-click-info h4 {
+  font-weight: bold;
+  margin-bottom: 0px; /* Remove space after title */
+}
+
+/* Dark mode styles for bubble click info */
+.dark #bubble-click-info {
+  background: #2d3748 !important;
+  color: #e2e8f0;
+  border: 2px solid #4a5568;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.dark #bubble-click-info h4 {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+

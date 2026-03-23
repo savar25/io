@@ -1,0 +1,19 @@
+type: service  
+name: Glen Community Response Team  
+description: emergency service provider  
+state: CO  
+version: 0.1 
+
+activity:  
+- description: patient transport    
+- description: bed and breakfast  
+- description: ppe  
+
+output:  
+- sector: 622000  
+  sector_name: Hospitals  
+- sector: 622110  
+  sector_name: General Medical and Surgical Hospitals  
+
+flow:
+- api: https://api.edap-cluster.com/useeio/api  

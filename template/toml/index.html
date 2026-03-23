@@ -1,0 +1,123 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+
+<script type="text/javascript" src="/localsite/js/d3.v5.min.js" id="/localsite/js/d3.v5.min.js"></script>
+<script type="text/javascript" src="/localsite/js/jquery.min.js" id="/localsite/js/jquery.min.js"></script>
+<script type="text/javascript" src="/localsite/js/showdown.min.js" id="/localsite/js/showdown.min.js"></script>
+<script type="text/javascript" src="/localsite/js/localsite.js?showheader=true"></script>
+
+<script src="js/load-toml-files.js"></script>
+<script src="js/toml.js"></script>
+
+<script>
+  $(document).ready(function () {
+
+    // 
+    // https://github.com/codeforamerica/brigade-project-index/tree/index/v1/projects
+
+    let pagePath = "https://raw.githubusercontent.com/codeforamerica/brigade-project-index/index/v1/projects/Hack%20for%20LA%20Brigade/civic-tech-structure.toml";
+    
+    loadTomlFiles(pagePath,"input"); // Calls convertTomlToHtml()
+  });
+
+  function convertTomlToHtml() {
+    var encode = function () {
+      var toml_input = document.getElementById("input").value;
+      try {
+        var obj = TOML.parse(toml_input)
+        output = JSON.stringify(obj, null, 4);
+      } catch (error) {
+        output = error;
+      }
+      document.getElementById("output").value = output;
+    };
+    encode();
+    encodeButton = document.getElementById("encode")
+    encodeButton.addEventListener("click", encode, false);
+  }
+</script>
+
+<style>
+  textarea {
+    display: block;
+    width: 100%;
+    height: 250px;
+  }
+
+
+</style>
+
+</head>
+
+<body>
+
+<div class="content contentpadding">
+    <h1>Convert TOML to JSON</h1>
+
+    <p>Using <a href="https://github.com/JonAbrams/tomljs">Jon Abrams' TOML parser</a></p>
+
+Bug: We need to add regex to convert arrays to one line before sending to toml.js
+
+<pre>
+topics = [
+  "civic-tech",
+  "civictechindex"
+]
+</pre>
+
+TOML loaded from: <a href="https://raw.githubusercontent.com/codeforamerica/brigade-project-index/index/v1/projects/Hack%20for%20LA%20Brigade/civic-tech-structure.toml">GitHub</a>
+
+<textarea id="input">
+# Example:
+title = "TOML Example"
+
+[owner]
+name = "Tom Preston-Werner"
+organization = "GitHub"
+bio = "GitHub Cofounder & CEO\nLikes tater tots and beer."
+dob = 1979-05-27T07:32:00Z # First class dates? Why not?
+
+[database]
+server = "192.168.1.1"
+ports = [ 8001, 8001, 8002 ]
+connection_max = 5000
+enabled = true
+
+[servers]
+
+  # You can indent as you please. Tabs or spaces. TOML don't care.
+  [servers.alpha]
+  ip = "10.0.0.1"
+  dc = "eqdc10"
+
+  [servers.beta]
+  ip = "10.0.0.2"
+  dc = "eqdc10"
+
+[altserver.us.ca.sf]
+ip = "192.168.0.1"
+
+[clients]
+data = [ ["gamma", "delta"], [1, 2] ] # just an update to make sure parsers support it
+</textarea>
+<br>
+
+<button id="encode" class="btn btn-warning">Re-encode</button>
+<br><br>
+
+
+Output as JSON:
+<br><br>
+
+<textarea id="output" disabled="disabled"></textarea>
+
+</div>    
+<link rel="stylesheet" href="/localsite/css/fonts/materialicons/icon.css" id="/localsite/css/fonts/materialicons/icon.css" />
+</body>
+</html>

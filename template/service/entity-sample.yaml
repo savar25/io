@@ -1,0 +1,16 @@
+type: organization
+name: Acme Coal Power
+description: coal power plant
+io_version: 0.1
+
+flow:
+- url: /(.*\.(appcache|manifest))
+  mime_type: text/cache-manifest
+  static_files: static/\1
+  upload: static/(.*\.(appcache|manifest))
+
+activity:
+- description: electric power generation
+
+output:
+- 

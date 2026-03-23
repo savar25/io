@@ -1,0 +1,102 @@
+---
+id: ec3yznau
+ref: https://openepd.buildingtransparency.org/api/epds/EC3YZNAU
+doctype: OpenEPD
+version: null
+language: en
+private: false
+declaration_url: cqd.io/e/ec3yznau9d
+program_operator_doc_id: 9BD4F9CB-3584-4D34-90F8-B6E40B69653D
+program_operator_version: null
+third_party_verification_url: null
+date_of_issue: '2019-01-28T00:00:00Z'
+valid_until: '2024-01-28T00:00:00Z'
+declared_unit:
+  qty: 1
+  unit: m3
+kg_per_declared_unit:
+  qty: 2400
+  unit: kg
+kg_C_per_declared_unit: null
+product_name: DM0115CA
+product_sku: null
+product_description: DOT MINOR 3/4" 15FA 3-5SL AIR
+product_image_small: null
+product_image: null
+product_service_life_years: null
+product_classes:
+  io.cqd.ec3: Concrete >> ReadyMix
+applicable_in: null
+product_usage_description: null
+product_usage_image: null
+manufacturing_description: null
+manufacturing_image: null
+impacts: {}
+specs:
+  concrete:
+    strength_28d: 20.684271879505086 MPa
+    slump: 4.0 in
+    strength_other: null
+    strength_other_d: null
+    w_c_ratio: null
+    aci_exposure_classes: null
+    csa_exposure_classes: null
+    en_exposure_classes: null
+    options:
+      lightweight: false
+      scc: false
+      finishable: null
+      air: true
+      co2: false
+      white: false
+      plc: false
+      fiber_reinforced: null
+    cementitious:
+      fly_ash: 0.15
+      slag: 0
+manufacturer:
+  web_domain: centralconcrete.com
+  ref: https://openepd.buildingtransparency.org/api/orgs/centralconcrete.com
+  name: Central Concrete
+  alt_names:
+    - Central Concrete
+    - Monumental Concrete
+    - Centre Concrete
+plants:
+  - id: 849W93CW+79.centralconcrete.com
+    name: Queens Lane (wet)
+    ref: https://openepd.buildingtransparency.org/api/plants/849W93CW+79.centralconcrete.com
+    pluscode: 849W93CW+79
+    address: 457 Queens Lane, San Jose, CA 95112
+program_operator:
+  web_domain: astm.org
+  ref: https://openepd.buildingtransparency.org/api/orgs/astm.org
+  name: ASTM International
+  alt_names:
+    - astm
+    - ASTMInternational
+third_party_verifier:
+  web_domain: iere.org
+  ref: https://openepd.buildingtransparency.org/api/orgs/iere.org
+  name: EarthSure
+  alt_names:
+    - Earthsure
+    - IERE
+    - Institute for Environmental Research and Education
+pcr:
+  id: ec37zjz1
+  name: North American PCR for Concrete
+  ref: https://openepd.buildingtransparency.org/api/pcrs/EC37ZJZ1
+  issuer_doc_id: null
+  short_name: Concrete
+  version: '1.1'
+  date_of_issue: '2013-12-04'
+  valid_until: '2018-12-04'
+  declared_units:
+    - qty: 1
+      unit: m3
+  doc: https://app.box.com/file/292552692203
+compliance: []
+---
+
+Notes about data.

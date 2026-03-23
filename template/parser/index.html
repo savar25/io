@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>YAML-to-JSON-to-HTML</title>
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="Paste your YAML code and see results in JSON and HTML.">
+<meta name="keywords" content="yaml,parser,javascript">
+
+<!-- Original. HTML display added to: https://nodeca.github.io/js-yaml/ -->
+
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link type="text/css" rel="stylesheet" href="../../../localsite/css/base.css" id="/localsite/css/base.css" />
+<script type="text/javascript" src="../../../localsite/js/d3.v5.min.js" id="/localsite/js/d3.v5.min.js"></script>
+<script type="text/javascript" src="../../../localsite/js/jquery.min.js" id="/localsite/js/jquery.min.js"></script>
+<script type="text/javascript" src="../../../localsite/js/showdown.min.js" id="/localsite/js/showdown.min.js"></script>
+
+<script type="text/javascript" src="../../../localsite/js/localsite.js?showheader=true&showsearch=true"></script>
+
+<!-- titlecell, etc. -->
+<!--
+<link rel="stylesheet" href="../../../community/css/community.css">
+-->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.css">
+<link rel="stylesheet" href="https://nodeca.github.io/js-yaml/codemirror.css">
+<link rel="stylesheet" href="css/demo.css">
+
+<!-- https://nodeca.github.io/js-yaml/demo.js -->
+<script src="js/demo.js"></script>
+
+<link type="text/css" rel="stylesheet" href="css/yaml-label.css" id="/io/template/parser/css/yaml-label.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+<script src="js/yaml-label.js"></script>
+
+<style>
+  .hidden, .dst {
+    display: block !important;
+  }
+  .json_to_html_table {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+</style>
+
+
+
+</head>
+<body>
+
+    
+<div class="content contentpadding">
+
+<div class="header">
+  <br>
+  <a href="../../../profile/item/menu.html">Product and Food Impact Menus</a> - <a href="../">GEO Profiles</a><br>
+  <h1>YAML-to-JSON-to-HTML JavaScript parser</h1>
+  Scroll down to view nested hierarchy. Hit reload if columns are blank.
+
+<!--
+Original Demo link stopped working
+https://dev2.nutritionix.com/html/label-jquery-plugin/demo/2018-version/demo.html
+-->
+
+</div>
+<div style="clear:both;"></div>
+
+<!-- removed dash in front of qty: 1 
+removed dash plants: - id
+-->
+
+<div class="src" style="float:left">
+<h4 class="subheader"><a href="#" id="permalink" style="display:none">permalink</a> Edit YAML</h4>
+<textarea id="source">test
+</textarea>
+</div>
+
+<div class="dst" style="float:left">
+  <h4 class="subheader">Converted to JSON</h4>
+  <textarea id="result"></textarea>
+</div>
+
+<div style="float:left">
+  <h4 class="subheader">Footprint Label</h4>
+  <div id="profileContainer"></div>
+</div>
+<div style="clear:both"></div>
+
+<div style="clear:both" class="format_table json_to_html_table">
+  <h4 class="subheader">Nested Hierarchy</h4>
+  <div id="formatted"></div>
+</div>
+
+<div style="clear:both"></div>
+
+<div class="gh-ribbon">
+  <a href="../../../webroot/" target="_blank" style="color: #fff">Clone our webroot me on GitHub</a>
+</div>
+
+</div>
+
+<script>
+function getHash() {
+    const hash = {};
+    if (location.hash) {
+        const params = location.hash.slice(1).split('&');
+        params.forEach(param => {
+            const [key, value] = param.split('=');
+            if (key && value) {
+                hash[decodeURIComponent(key)] = decodeURIComponent(value);
+            }
+        });
+    }
+    return hash;
+}
+
+function getCodeMirrorEditor(textareaId) {
+    const textarea = document.getElementById(textareaId);
+    if (!textarea) {
+        return null;
+    }
+    if (textarea.nextElementSibling && textarea.nextElementSibling.CodeMirror) {
+        return textarea.nextElementSibling.CodeMirror;
+    }
+    if (textarea.CodeMirror) {
+        return textarea.CodeMirror;
+    }
+    const editors = document.querySelectorAll('.CodeMirror');
+    for (const editor of editors) {
+        if (editor && editor.CodeMirror) {
+            const prevSibling = editor.previousSibling;
+            const prevElement = editor.previousElementSibling;
+            if (prevSibling === textarea || prevElement === textarea) {
+                return editor.CodeMirror;
+            }
+        }
+    }
+    return null;
+}
+
+function setEditorValue(editor, textarea, value) {
+    if (editor) {
+        if (editor.getValue() !== value) {
+            editor.setValue(value);
+        }
+    } else if (textarea && textarea.value !== value) {
+        textarea.value = value;
+    }
+}
+
+let codeMirrorListenersAttached = false;
+function attachCodeMirrorListeners() {
+    if (codeMirrorListenersAttached) {
+        return;
+    }
+    const sourceEditor = getCodeMirrorEditor('source');
+    if (sourceEditor) {
+        sourceEditor.on('change', () => {
+            clearTimeout(sourceEditor.__formatYamlTimer);
+            sourceEditor.__formatYamlTimer = setTimeout(formatYaml, 150);
+        });
+        codeMirrorListenersAttached = true;
+    }
+}
+
+async function loadYAML() {
+    try {
+        const hash = getHash();
+        let pathYaml = "../product/product-nodashes.yaml";
+        if (hash.yaml) {
+          pathYaml = hash.yaml;
+        }
+        console.log('Loading YAML from:', pathYaml);
+        const response = await fetch(pathYaml);
+        const data = await response.text();
+        console.log('YAML data loaded, length:', data.length);
+        const sourceTextarea = document.getElementById('source');
+        const sourceEditor = getCodeMirrorEditor('source');
+        const matches = data.match(/---\n([\s\S]*?)\n---\n([\s\S]*)/);
+        const yamlContent = matches ? matches[1] : data;
+        setEditorValue(sourceEditor, sourceTextarea, yamlContent);
+        setTimeout(() => {
+          attachCodeMirrorListeners();
+          formatYaml();
+        }, 300);
+    } catch (error) {
+        console.error('Error loading YAML:', error);
+    }
+}
+
+loadYAML();
+
+const observer = new MutationObserver(() => {
+    const sourceEditor = getCodeMirrorEditor('source');
+    if (sourceEditor && !sourceEditor.__hasParserListener) {
+        sourceEditor.on('change', () => {
+            clearTimeout(sourceEditor.__formatYamlTimer);
+            sourceEditor.__formatYamlTimer = setTimeout(formatYaml, 150);
+        });
+        sourceEditor.__hasParserListener = true;
+    }
+    if (!sourceEditor) {
+        formatYaml();
+    }
+});
+observer.observe(document.getElementById('source'), { subtree: true, characterData: true, childList: true });
+
+function formatYaml() {
+    attachCodeMirrorListeners();
+
+    const profileContainer = document.getElementById('profileContainer');
+    const sourceTextarea = document.getElementById('source');
+    const sourceEditor = getCodeMirrorEditor('source');
+    const yamlText = sourceEditor ? sourceEditor.getValue() : (sourceTextarea ? sourceTextarea.value : '');
+
+    if (!yamlText) {
+        if (profileContainer) {
+            profileContainer.innerHTML = '';
+        }
+        const formattedDiv = document.getElementById('formatted');
+        if (formattedDiv) {
+            formattedDiv.innerHTML = '';
+        }
+        setEditorValue(getCodeMirrorEditor('result'), document.getElementById('result'), '');
+        return;
+    }
+
+    try {
+        const yamlObj = jsyaml.load(yamlText);
+        formatYamlLabel(yamlObj, profileContainer);
+
+        const jsonString = JSON.stringify(yamlObj, null, 2);
+        setEditorValue(getCodeMirrorEditor('result'), document.getElementById('result'), jsonString);
+
+        if (typeof convertToHtmlTable === 'function') {
+            convertToHtmlTable(yamlObj);
+        } else {
+            const formattedDiv = document.getElementById('formatted');
+            if (formattedDiv) {
+                formattedDiv.textContent = jsonString;
+            }
+        }
+    } catch (error) {
+        console.error('Error formatting YAML:', error);
+        if (profileContainer) {
+            profileContainer.innerHTML = '<div class="text-highlight">Unable to render label. Please fix YAML errors.</div>';
+        }
+        const formattedDiv = document.getElementById('formatted');
+        if (formattedDiv) {
+            formattedDiv.textContent = 'Unable to create hierarchy output (invalid YAML).';
+        }
+        setEditorValue(getCodeMirrorEditor('result'), document.getElementById('result'), '');
+    }
+}
+
+</script>
+
+</body>
+</html>
