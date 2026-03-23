@@ -317,14 +317,15 @@ function updateChart() {
     //config = useeio.urlConfig(); // Didn't work for clearing each time hash changes
 
     let theModel = 'USEEIOv2.0.1-411';
+    let chartEndpoint = endpoint; // default: /io/build/api
     if (hash.state) { // Prior to 2024 states were GA, ME, MN, OR, WA
         let thestate = hash.state.split(",")[0].toUpperCase();
         theModel = thestate + "EEIOv1.0-s-20"
 
-        naics = ""; // TEMP. 
-
-        // With transition to 73 Sectors the Naics are not in the models.
-        alert("BETA BUG with transition to 73 Sectors.\r\r" + hash.state + " State model:\r" + endpoint + "/" + theModel);
+        // State models use 73 sectors (vs 411 for national).
+        // Full 50-state data is in useeio-json repo.
+        chartEndpoint = "/useeio-json/models/2020";
+        console.log("Loading state model: " + theModel + " from " + chartEndpoint);
     }
     var modelID = config.get().model || theModel;
     if (param.iomodel) {
@@ -332,7 +333,7 @@ function updateChart() {
     }
 
     var model = useeio.model({
-        endpoint: endpoint,
+        endpoint: chartEndpoint,
         model: modelID,
         asJsonFiles: true,
     });
