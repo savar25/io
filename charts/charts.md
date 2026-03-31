@@ -183,7 +183,7 @@ The above would indicate: Lots of Jobs and Value Added, with low levels of negat
 
 Total Amounts will be displayed with a toggle to Per-Dollar Spent.
 
-Add total amounts to the [Inflow-Outflow Chart](/io/charts/inflow-outflow/#set=prosperity&indicators=VADD,JOBS) and show total amounts by default. See [total amounts examples](/localsite/info/data/totals/) and our display of easy to read totals using [commodity data procesed with python](/data-pipeline/research/economy/).  Update values displayed when the hash value changes from vtype=total to vtype=perdollar and back. Use the formatCellEasy() function in localsite.js or the python version formatCell() in the data-pipeline repo.
+Add total amounts to the [Inflow-Outflow Chart](/io/charts/inflow-outflow/#set=prosperity&indicators=VADD,JOBS) and show total amounts by default. See [total amounts examples](/localsite/info/data/totals/) and our display of easy to read totals using [commodity data procesed with python](/data-pipeline/research/economy/).  Update values displayed when the hash value changes from vtype=total to vtype=perdollar and back. Use the formatCell() function in localsite.js or the python version formatCell() in the data-pipeline repo.
 
 <!--
 Reminder for Loren
