@@ -407,10 +407,10 @@
 
   <div id="score-help-panel" hidden>
     <p><strong>How the partner-country score works:</strong> the score ranks import/export partner countries from best to worst on a 0 to 100 scale.</p>
-    <p><strong>Amount Spent:</strong> score = 100 x partner trade value / largest partner trade value.</p>
-    <p><strong>CO&#x2082; Emissions and Water Use:</strong> score = 100 x (0.6 x trade strength + 0.4 x lower impact per amount spent efficiency).</p>
-    <p><strong>Employment:</strong> score = 100 x (0.6 x trade strength + 0.4 x higher jobs per amount spent efficiency).</p>
-    <p><strong>Trade strength</strong> is the partner&rsquo;s trade value relative to the largest partner. <strong>Efficiency</strong> compares indicator per amount spent across the visible partner-country set.</p>
+    <p><strong>Dollar Value:</strong> score = 100 x partner dollar trade value / largest partner dollar trade value.</p>
+    <p><strong>CO&#x2082; Emissions and Water Use:</strong> score = 100 x (0.6 x trade strength + 0.4 x lower impact per dollar efficiency).</p>
+    <p><strong>Employment:</strong> score = 100 x (0.6 x trade strength + 0.4 x higher jobs per dollar efficiency).</p>
+    <p><strong>Trade strength</strong> is the partner&rsquo;s dollar trade value relative to the largest partner. <strong>Efficiency</strong> compares indicator per dollar traded across the visible partner-country set.</p>
   </div>
 
   <div class="hero-meta">
@@ -434,25 +434,11 @@
         <option value="exports">Exports</option>
       </select>
     </div>
-    <div class="control" id="currency-control" style="display:none;">
-      <label for="currency-select">Currency</label>
-      <select id="currency-select">
-        <option value="EUR">EUR - Euro</option>
-      </select>
-    </div>
-    <div class="control">
-      <label for="industry-label-select">Industry labels</label>
-      <select id="industry-label-select">
-        <option value="title">Title</option>
-        <option value="short">Short name</option>
-        <option value="verbose">Complete verbose name</option>
-      </select>
-    </div>
     <div class="control">
       <label for="topn-slider">Top flows</label>
       <div>
-        <input type="range" id="topn-slider" min="5" max="50" step="1" value="15">
-        <span id="topn-label">15</span>
+        <input type="range" id="topn-slider" min="5" max="50" step="1" value="18">
+        <span id="topn-label">18</span>
       </div>
     </div>
   </div>
@@ -473,7 +459,7 @@
 <div id="click-tooltip" class="tooltip is-click" aria-hidden="true"></div>
 
 <script>
-const defaultTradeDashboardHash = "country=AU&year=2019&flow=domestic&topn=15";
+const defaultTradeDashboardHash = "country=AU&year=2019&flow=domestic&topn=18";
 if (!window.location.hash) {
   if (window.history && typeof window.history.replaceState === "function") {
     window.history.replaceState(null, "", window.location.pathname + window.location.search + "#" + defaultTradeDashboardHash);
@@ -507,6 +493,6 @@ window.TRADE_DASHBOARD_CONFIG = {
 </script>
 <script src="https://cdn.jsdelivr.net/gh/savar25/trade-data@main/sankey-data.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/savar25/trade-data@main/trade-resource-data.js"></script>
-<script src="./chart.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/savar25/trade-data@main/chart.js"></script>
 </body>
 </html>
