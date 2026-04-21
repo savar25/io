@@ -4,8 +4,29 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Worldwide Trade Impact And Resource Dashboard</title>
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ModelEarth/localsite@main/css/base.css" id="/localsite/css/base.css" />
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ModelEarth/localsite@main/js/localsite.js?showheader=true&showsearch=true&showfilters=true"></script>
+<script>
+(function () {
+  const hostname = window.location.hostname || "";
+  const isFile = window.location.protocol === "file:";
+  const normalizedPath = (window.location.pathname || "").replace(/\\/g, "/");
+  const isLocalhost = hostname === "localhost" || hostname === "127.0.0.1" || hostname === "[::1]";
+  const isGitHubPages = /\.github\.io$/i.test(hostname);
+  const firstPathSegment = normalizedPath.split("/").filter(Boolean)[0] || "";
+  const isIoMirror = /\/io\//i.test(normalizedPath) || firstPathSegment.toLowerCase() === "io";
+  const localsiteBase = (isFile || isLocalhost || isIoMirror)
+    ? "../../../../localsite"
+    : "https://cdn.jsdelivr.net/gh/ModelEarth/localsite@main";
+  const tradeDataBase = (isFile || isLocalhost || isIoMirror)
+    ? "../../../../trade-data"
+    : "https://cdn.jsdelivr.net/gh/savar25/trade-data@main";
+
+  window.IO_LOCALSITE_BASE = localsiteBase;
+  window.IO_TRADE_DATA_BASE = tradeDataBase;
+
+  document.write('<link type="text/css" rel="stylesheet" href="' + localsiteBase + '/css/base.css" id="/localsite/css/base.css" />');
+  document.write('<script type="text/javascript" src="' + localsiteBase + '/js/localsite.js?showheader=true&showsearch=true&showfilters=true"><\/script>');
+})();
+</script>
 <style>
   body {
     background: #fafbfc;
@@ -407,10 +428,10 @@
 
   <div id="score-help-panel" hidden>
     <p><strong>How the partner-country score works:</strong> the score ranks import/export partner countries from best to worst on a 0 to 100 scale.</p>
-    <p><strong>Amount Spent:</strong> score = 100 x partner trade value / largest partner trade value.</p>
-    <p><strong>CO&#x2082; Emissions and Water Use:</strong> score = 100 x (0.6 x trade strength + 0.4 x lower impact per amount spent efficiency).</p>
-    <p><strong>Employment:</strong> score = 100 x (0.6 x trade strength + 0.4 x higher jobs per amount spent efficiency).</p>
-    <p><strong>Trade strength</strong> is the partner&rsquo;s trade value relative to the largest partner. <strong>Efficiency</strong> compares indicator per amount spent across the visible partner-country set.</p>
+    <p><strong>Total Amount:</strong> score = 100 x partner trade value / largest partner trade value.</p>
+    <p><strong>CO&#x2082; Emissions and Water Use:</strong> score = 100 x (0.6 x trade strength + 0.4 x lower impact per total amount efficiency).</p>
+    <p><strong>Employment:</strong> score = 100 x (0.6 x trade strength + 0.4 x higher jobs per total amount efficiency).</p>
+    <p><strong>Trade strength</strong> is the partner&rsquo;s trade value relative to the largest partner. <strong>Efficiency</strong> compares indicator per total amount across the visible partner-country set.</p>
   </div>
 
   <div class="hero-meta">
@@ -449,7 +470,7 @@
       </select>
     </div>
     <div class="control">
-      <label for="topn-slider">Top flows</label>
+      <label for="topn-slider">Inflows</label>
       <div>
         <input type="range" id="topn-slider" min="5" max="50" step="1" value="15">
         <span id="topn-label">15</span>
@@ -483,8 +504,8 @@ if (!window.location.hash) {
 }
 
 window.TRADE_DASHBOARD_CONFIG = {
-  datasetBasePath: "https://cdn.jsdelivr.net/gh/savar25/trade-data@main/sankey-datasets",
-  yearBasePath: "https://cdn.jsdelivr.net/gh/savar25/trade-data@main/year",
+  datasetBasePath: window.IO_TRADE_DATA_BASE + "/sankey-datasets",
+  yearBasePath: window.IO_TRADE_DATA_BASE + "/year",
   rawYearBasePath: "https://raw.githubusercontent.com/savar25/trade-data/main/year"
 };
 
@@ -505,8 +526,10 @@ window.TRADE_DASHBOARD_CONFIG = {
   });
 }());
 </script>
-<script src="https://cdn.jsdelivr.net/gh/savar25/trade-data@main/sankey-data.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/savar25/trade-data@main/trade-resource-data.js"></script>
+<script>
+document.write('<script src="' + window.IO_TRADE_DATA_BASE + '/sankey-data.js"><\/script>');
+document.write('<script src="' + window.IO_TRADE_DATA_BASE + '/trade-resource-data.js"><\/script>');
+</script>
 <script src="./chart.js"></script>
 </body>
 </html>

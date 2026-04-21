@@ -1024,7 +1024,7 @@
 
   function titleizeLabel(label) {
     const replacements = {
-      amount: "Amount Spent",
+      amount: "Total Amount",
       air_emissions: "Air Emissions",
       employment: "Employment",
       energy: "Energy",
@@ -1380,12 +1380,26 @@
   }
 
   function defaultIndicators() {
-    const defaults = sankeyData && sankeyData.defaults ? sankeyData.defaults : manifest.defaults;
-    return defaults && defaults.length ? defaults.slice(0, 2) : indicatorColumns().slice(0, 2);
+    const ordered = sankeyData && sankeyData.defaults ? sankeyData.defaults.slice() : manifest.defaults.slice();
+    if (ordered.indexOf("amount") === -1 && indicatorColumns().indexOf("amount") !== -1) {
+      ordered.unshift("amount");
+    }
+    ordered.sort(function (left, right) {
+      if (left === right) { return 0; }
+      if (left === "amount") { return -1; }
+      if (right === "amount") { return 1; }
+      return left.localeCompare(right);
+    });
+    return ordered.slice(0, 2);
   }
 
   function setIndicatorOptions(select, selectedValue) {
-    const columns = indicatorColumns();
+    const columns = indicatorColumns().slice().sort(function (left, right) {
+      if (left === right) { return 0; }
+      if (left === "amount") { return -1; }
+      if (right === "amount") { return 1; }
+      return left.localeCompare(right);
+    });
     select.innerHTML = "";
     columns.forEach(function (column) {
       const option = document.createElement("option");
@@ -1944,7 +1958,7 @@
           titleizeLabel(indicator) + ": " + formatMetricExact(link.value, indicator),
           "Flow: " + flowLabel(link.source, link.target),
           "Trade ID: " + link.trade_id,
-          "Amount Spent: " + formatAmountExact(link.amount),
+          "Total Amount: " + formatAmountExact(link.amount),
           "Total Impact Value: " + formatExact(link.total_impact_value)
         ];
         if (leader) {
@@ -1971,7 +1985,7 @@
           { label: "Importer", value: displayIndName(link.target) },
           { label: "Flow", value: flowLabel(link.source, link.target) },
           { label: "Trade ID", value: String(link.trade_id) },
-          { label: "Amount Spent", value: formatAmountExact(link.amount) },
+          { label: "Total Amount", value: formatAmountExact(link.amount) },
           { label: "Value", value: formatMetricExact(link.value, indicator) },
           { label: "Impact", value: formatExact(link.total_impact_value) }
         ].concat(buildLeaderRows(leader, link, indicator));
@@ -2031,7 +2045,7 @@
           "Total Resources: " + formatExact(link.value),
           "Flow: " + flowLabel(link.source, link.target),
           "Trade ID: " + link.trade_id,
-          "Amount Spent: " + formatAmountExact(link.amount)
+          "Total Amount: " + formatAmountExact(link.amount)
         ].join("\n");
       },
       buildHoverRows: function (link) {
@@ -2048,7 +2062,7 @@
           { label: "Dataset", value: "trade_resource.csv" },
           { label: "Flow", value: flowLabel(link.source, link.target) },
           { label: "Trade ID", value: String(link.trade_id) },
-          { label: "Amount Spent", value: formatAmountExact(link.amount) },
+          { label: "Total Amount", value: formatAmountExact(link.amount) },
           { label: "Resources", value: formatExact(link.value) }
         ];
       }
@@ -2128,7 +2142,7 @@
         if (item.spotlight) {
           rows.push({ label: "Flow", value: flowLabel(item.spotlight.source, item.spotlight.target) });
           rows.push({ label: "Trade ID", value: String(item.spotlight.trade_id) });
-          rows.push({ label: "Amount Spent", value: formatAmountExact(item.spotlight.amount) });
+          rows.push({ label: "Total Amount", value: formatAmountExact(item.spotlight.amount) });
           rows.push({ label: "Spotlight Value", value: formatExact(item.spotlight.value) });
         }
 
