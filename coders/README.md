@@ -58,8 +58,8 @@ Collaborate on open source modeling tools.
 <span style="font-size: 18px;">Thursdays @ 7pm ET</span> (Eastern Time, NY and Atlanta)
 <!-- Moonshot Mondays, 10 PM EDT - [UN Goals](/data-commons/dist/), [Lunar Olympics AI](/projects/)-->
 
-Join in our [weekly Google Meetup on Thursdays @ 7pm ET](https://meet.google.com/pcv-xrdh-bat) 
-
+Join in our [weekly Google Meetup on Thursdays @ 7pm ET](https://meet.google.com/xqa-iqtc-rxo) 
+<!-- https://meet.google.com/pcv-xrdh-bat -->
 [Register as a Coding Volunteer](../../community/members/) and get started by <a href="../../webroot/" id="webroot-cloning-link">cloning the webroot repo</a> to&nbsp;contribute to our [ModelEarth repos](https://github.com/ModelEarth?tab=repositories), [Data Commons timelines](/localsite/timeline/) and [RealityStream&nbsp;colab](../../realitystream/). 
 
 <!--
@@ -84,10 +84,10 @@ Join in our [weekly Google Meetup on Thursdays @ 7pm ET](https://meet.google.com
 <span style="font-size: 18px;">RealityStream ML meetups are Tuesdays @ 6pm ET</span>
 -->
 
-[Our Google Meetup link](https://meet.google.com/pcv-xrdh-bat)  is the same for all our meetings.  
+[Our Google Meetup link](https://meet.google.com/xqa-iqtc-rxo)  is the same for all our meetings.  
 We're creating [Discord MemberSense Team Interfaces](../../feed/) - Our Discord invite is provided during meetups.
 
-<a href="https://meet.google.com/pcv-xrdh-bat" class="btn btn-success">Join Google Meetup</a>
+<a href="https://meet.google.com/xqa-iqtc-rxo" class="btn btn-success">Join Google Meetup</a>
 
 We have new [OPT opportunities](https://www.democracylab.org/projects/834) for Javascript and React developers.
 
