@@ -2,139 +2,35 @@
 <html lang="en-us">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Type" content="text/html;">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
-
-<title>Input-Output Sankey Diagram</title>
-<link type="text/css" rel="stylesheet" href="https://model.earth/localsite/css/base.css" />
-<script type="text/javascript" src="https://model.earth/localsite/js/d3.v5.min.js"></script>
-<script type="text/javascript" src="https://model.earth/localsite/js/jquery/jquery-1.12.4.min.js"></script>
-<script type="text/javascript" src="https://model.earth/localsite/js/localsite.js?showheader=true&showsearch=true"></script>
-<script type="text/javascript" src="https://model.earth/localsite/js/showdown.min.js"></script>
-<script type="text/javascript" src="https://model.earth/localsite/js/navigation.js"></script>
-
-<script src="https://unpkg.com/d3@4.10.2"></script>
-<script src="js/sk.d3.min.js"></script>
-<link rel="stylesheet" type="text/css" href="css/sk.d3.min.css" />
-<script src="data/IO.js"></script>
-
+<title>Sankey Charts</title>
+<script>
+(function () {
+  const target = "./desktop/index.html" + (window.location.search || "") + (window.location.hash || "#factor=amt");
+  window.location.replace(target);
+})();
+</script>
+<style>
+  body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background: #f7f8fa;
+    color: #1f2937;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.25rem;
+  }
+  a {
+    color: #2563eb;
+  }
+</style>
 </head>
-
 <body>
-<div class="content contentpadding" style="padding-top:25px;padding-bottom:0px">
-	<a href="../../../community/start/charts/">Chart Starters</a><br>
-	<h1>Sankey Input-Output Diagram</h1>
-	<a href="../../../profile/charts/sankey/">New Sankey</a> - By Mohammad Thousif and Savar Shirbhate<br>
-	<a href="dashboard">New Sankey Desktop</a> - By Savar Shirbhate<br>
-
-	To update: <a href="../../../profile/footprint/sector_supply_impacts.html">State Sector Supply Impacts</a><br><br>
-
-	<h2>Prior Dev</h2>
-	
-	Old: <a href="/profile/charts/sankey/">dev version</a>.
-
-	Our prior Sankey chart test data was generated using <a href="https://github.com/ModelEarth/io/tree/main/charts/sankey">example-I0.py</a> in the current folder.<br>
-	<a href="data/IO.js">View json dataset</a>
-	and <a href="https://model.earth/3d_visualizations" style="white-space: nowrap;">Network graph version</a>.<br><br>
-
-	
+<div class="wrap">
+  <p>Redirecting to the desktop Sankey view.</p>
+  <p><a href="./desktop/index.html">Open the desktop Sankey directly</a></p>
 </div>
-
-<div class="content contentpadding contentwide" style="padding-top:00px; padding-bottom:0px">
-	<div id="chart"></div>
-</div>
-
-<div class="content contentpadding" style="padding-top:10px">
-
-	<h3>About Sankey Chart</h3>
-	The data is similar to the <a href="../../charts/inflow-outflow/#set=prosperity&indicators=VADD,JOBS&sectors=333613,335912,336111">React IO Chart</a>.<br><br>
-
-	The following sectors are used above:<br>
-	sectors=333613,335912,336111<br><br>
-
-	<b>Goals:</b><br>
-	Make all columns of the chart the same height. May need to include an "other" item.<br>
-	If "other" size is massive (more than 75%), toggle to scaled view for the right column.<br>
-	<br>
-
-	<b>For D3 enthusist</b><br>
-	Make the chart scale as browser is resized<br>
-	<br>
-
-	<b>To do:</b><br>
-	Add column on far left for environmental impact areas of inflow<br>
-	Add column on far right for environmental impact areas of outflow<br><br>
-
-	We also experimented (below) by using these <a href="https://github.com/USEPA/USEEIO_API/blob/master/examples/example_use.ipynb">Python USEEIO queries</a> within <a href="https://jupyter.org/install">Jupyter</a>.<br>
-	<br>
-
-	To run the API from json on your local machine's port 8080, see the <a href="http://model.earth/useeio.js">useeio.js</a> repo.
-
-	<h2>More</h2>
-
-    <a href="https://echarts.apache.org/examples/en/index.html">eCharts</a> - 
-    <a href="/community/start/charts/">More Sankey examples</a><br><br>
-
-    <!--
-    <a href="/io/charts/sankey/">example-I0.py</a> could pull data from <a href="https://github.com/ModelEarth/profile/tree/main/impacts/2020">profile/impacts/2020</a><br><br>
-	-->
-
-    EXIOBASE: <a href="https://sankey.theshiftproject.org">Complex Sankey</a> | <a href="https://github.com/ModelEarth/Mapping-global-ghg-emissions">Our PR on using Python 3.10</a> | <a href="https://github.com/baptiste-an/Mapping-global-ghg-emissions/issues/2">Exiobase Sankey issue Loren documented</a><br><br>
-
-
-    <a href="https://sankey.theshiftproject.org">Big Sankey</a><br>
-    <a href="https://github.com/ModelEarth/Mapping-global-ghg-emissions">Our Fork with python 3.10</a><br>
-    <a href="https://github.com/baptiste-an/Mapping-global-ghg-emissions/issues/2">bug resolved</a><br>
-    
-
-</div>
-
-
-
-	<style>
-		#chart {
-			height: 700px;
-			min-width: 800px;
-			width: 100%;
-			max-width: 4000px;
-		}
-		body {
-				margin:0px;
-				padding:0px;
-				-webkit-font-smoothing:antialiased;
-		}
-
-	</style>
-	<script>
-		var configSankey = {
-			margin: { top: 10, left: 0, right: 0, bottom: 10 },
-			nodes: {
-				dynamicSizeFontNode: {
-					enabled: true,
-					minSize: 14,
-					maxSize: 30
-				},
-				draggableX: true, // default [ false ]
-				draggableY: true, // default [ true ]
-				colors: d3.scaleOrdinal(d3.schemeCategory10)
-			},
-			links: {
-				formatValue: function(val) {
-					return d3.format(",.3f")(val) + ' %';
-				}
-			},
-			tooltip: {
-				infoDiv: true,
-				labelSource: 'Input:',
-				labelTarget: 'Output:'
-			}
-		}
-
-		var objSankey = sk.createSankey('#chart', configSankey, chartData);
-
-		//objSankey.updateData(new_dataJson); // From data_energyjson_new.js
-	</script>
-
 </body>
 </html>
