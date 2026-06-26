@@ -3,10 +3,27 @@
 <head>
 <meta charset="utf-8">
 <title>Environmentally-Extended Input-Output Model</title>
-<link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/ModelEarth/localsite@main/img/logo/earth/model-earth.png" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ModelEarth/localsite@main/css/base.css" id="/localsite/css/base.css" />
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ModelEarth/localsite@main/js/localsite.js?showheader=true&showsearch=true"></script>
+<script>
+(function () {
+  const hostname = window.location.hostname || "";
+  const isLocalEnvironment =
+    window.location.protocol === "file:" ||
+    hostname === "localhost" ||
+    hostname === "127.0.0.1" ||
+    hostname === "[::1]";
+  const localsiteBase = isLocalEnvironment
+    ? "../../localsite/"
+    : "https://cdn.jsdelivr.net/gh/ModelEarth/localsite@main/";
+
+  window.CHARTS_LOCALSITE_BASE = localsiteBase;
+  window.localsite_repo3 = localsiteBase;
+
+  document.write('<link rel="icon" type="image/x-icon" href="' + localsiteBase + 'img/logo/earth/model-earth.png" />');
+  document.write('<link type="text/css" rel="stylesheet" href="' + localsiteBase + 'css/base.css" id="/localsite/css/base.css" />');
+  document.write('<script type="text/javascript" src="' + localsiteBase + 'js/localsite.js?showheader=true&showsearch=true"><\/script>');
+})();
+</script>
 
 <script type="text/javascript">
 loadMarkdown("charts.md", "topicsDiv", "_parent");
@@ -41,6 +58,11 @@ loadMarkdown("charts.md", "topicsDiv", "_parent");
   <br>
 </div>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ModelEarth/localsite@main/css/fonts/materialicons/icon.css" id="/localsite/css/fonts/materialicons/icon.css" />
+<script>
+(function () {
+  const localsiteBase = window.CHARTS_LOCALSITE_BASE || "../../localsite/";
+  document.write('<link rel="stylesheet" href="' + localsiteBase + 'css/fonts/materialicons/icon.css" id="/localsite/css/fonts/materialicons/icon.css" />');
+})();
+</script>
 </body>
 </html>
